@@ -5,7 +5,7 @@ Get basic information about the VMs on VMWare vSphere
 
 1. Clone this repo
 
-    `git clone https://github.com/xtronix2000/vm_dump.git'
+    `git clone https://github.com/xtronix2000/vm_dump.git`
 
 2. Navigate to the directory
 
