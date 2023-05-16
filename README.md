@@ -1,7 +1,7 @@
 # vm_dump
 Get basic information about the VMs on VMWare vSphere
 
-## Installation ⚙️
+## Installation
 
 1. Clone this repo
 
@@ -28,6 +28,6 @@ Get basic information about the VMs on VMWare vSphere
     `python3 main.py`
     
 
-## VMware Developer Documentation 🔗
+## VMware Developer Documentation
 
 (https://developer.vmware.com/apis)
