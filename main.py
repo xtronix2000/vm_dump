@@ -22,13 +22,13 @@ def get_all_info():
         {'vmName': j.name,
          'ipAddress': j.summary.guest.ipAddress,
          'host': j.summary.runtime.host.name,
-         'storageUsageGB': str(round(j.summary.storage.committed / 1024 ** 3, 2)),  # float
-         'memorySizeGB': str(j.config.hardware.memoryMB // 1024),  # int
-         'numCPU': str(j.config.hardware.numCPU),  # int
-         'corePerSocket': str(j.config.hardware.numCoresPerSocket),  # int
+         'storageUsageGB': round(j.summary.storage.committed / 1024 ** 3, 2),
+         'memorySizeGB': j.config.hardware.memoryMB // 1024,
+         'numCPU': j.config.hardware.numCPU,
+         'corePerSocket': j.config.hardware.numCoresPerSocket,
          'guestFullName': j.summary.config.guestFullName,
          'powerState': j.summary.runtime.powerState,
-         'uptime': str(datetime.timedelta(seconds=j.summary.quickStats.uptimeSeconds))
+         'uptime': datetime.timedelta(seconds=j.summary.quickStats.uptimeSeconds)
          } for j in managed_objects]
     return vm_list
 
