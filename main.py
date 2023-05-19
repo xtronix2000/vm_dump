@@ -1,21 +1,20 @@
 import ssl
-from configparser import ConfigParser
-from pyVmomi import vim
-from pyVim.connect import SmartConnect, Disconnect
-import datetime
 import json
+import datetime
+from pyVmomi import vim
+from configparser import ConfigParser
+from pyVim.connect import SmartConnect, Disconnect
 
 
-#  ------------------------------File_import------------------------------
 config = ConfigParser()
 config.read('credentials.ini')
-#  ------------------------------Connection------------------------------
+
+
 s = ssl.create_default_context(purpose=ssl.Purpose.CLIENT_AUTH)
 s.verify_mode = ssl.CERT_NONE
 c = SmartConnect(**config['VSphere'], sslContext=s)
 
 
-#  --------------------------------------------Get basic information of all VMs---------------------------------------
 def get_all_info():
     managed_objects = c.content.viewManager.CreateContainerView(c.content.rootFolder, [vim.VirtualMachine], True).view
     vm_list = [
@@ -40,4 +39,4 @@ with open(f'results/dump_{datetime.datetime.now().strftime("%d.%m.%Y_%H.%M.%S")}
     f.write(json.dumps(vm_info_list, ensure_ascii=False, indent=4))
 
 
-Disconnect(c)  # important
+Disconnect(c)
